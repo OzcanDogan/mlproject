@@ -21,10 +21,10 @@ def evaluate_model(X_train,y_train,X_test,y_test,models,params):
         report = {}
         for name,model in models.items():
             
-            para = params[name]
-            gs = GridSearchCV(model,para ,cv=3)
-            gs.fit(X_train,y_train)
-            model.set_params(**gs.best_params_)
+            #para = params[name]
+            #gs = GridSearchCV(model,para ,cv=3)
+            #gs.fit(X_train,y_train)
+            #model.set_params(**gs.best_params_)
             model.fit(X_train,y_train)
             y_train_pred= model.predict(X_train)
             y_test_pred = model.predict(X_test)
