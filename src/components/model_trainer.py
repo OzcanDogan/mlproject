@@ -1,12 +1,10 @@
 import pandas as pd 
 import numpy as np 
 from sklearn.linear_model import LinearRegression
-from catboost import CatBoostRegressor
 from sklearn.ensemble import AdaBoostRegressor,RandomForestRegressor,GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import r2_score
-from xgboost import XGBRegressor
 from src.exception import CustomException
 from src.logger import logging
 import os 
@@ -37,8 +35,6 @@ class ModelTrainer:
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "Linaer Regression": LinearRegression(),
                 "KNN": KNeighborsRegressor(),
-                "XGBRegrssor": XGBRegressor(),
-                "CatBoosting Regressor": CatBoostRegressor(),
                 "AdaBoostRegressor":AdaBoostRegressor()
             }
             params = {
@@ -65,16 +61,6 @@ class ModelTrainer:
                         'n_neighbors': [3, 5, 7, 9, 11],
                         'weights': ['uniform', 'distance'],
                         'algorithm': ['auto', 'ball_tree', 'kd_tree']
-                        },
-                        "XGBRegrssor": {
-                        'learning_rate': [0.1, 0.01, 0.05, 0.001],
-                        'n_estimators': [8, 16, 32, 64, 128, 256]
-                        },
-                        "CatBoosting Regressor": {
-                        'depth': [6, 8, 10],
-                        'learning_rate': [0.01, 0.05, 0.1],
-                        'iterations': [30, 50, 100],
-                        'verbose': [False]
                         },
                         "AdaBoostRegressor": {
                         'learning_rate': [0.1, 0.01, 0.5, 0.001],
