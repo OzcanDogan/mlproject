@@ -23,6 +23,7 @@ class DataIngestion:
         logging.info("Data ingestion started.")
         try:
             df = pd.read_csv("notebooks/data/stud.csv")
+            df.columns = [col.strip().replace(' ', '_').replace('/', '_') for col in df.columns]
             logging.info("raw data succesfully read and the type of data is now dataframe")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
